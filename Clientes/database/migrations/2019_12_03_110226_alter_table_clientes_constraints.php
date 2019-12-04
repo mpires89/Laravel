@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableClientes extends Migration
+class AlterTableClientesConstraints extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,12 @@ class CreateTableClientes extends Migration
      */
     public function up()
     {
-        Schema::create('clientes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('tipo_cliente');
-            $table->integer('endereco_id')->unsigned();
-            $table->integer('pessoa_fisica_id')->nullable()->unsigned();
-            $table->integer('pessoa_juridica_id')->nullable()->unsigned();
-
-
+        Schema::table('clientes',function (Blueprint $table){
+            $table->foreign('endereco_id')->references('id')->on('endereco');
+            $table->foreign('pessoa_fisica_id')->references('id')->on('pessoa_fisica');
+            $table->foreign('pessoa_juridica_id')->references('id')->on('pessoa_juridica');
         });
-
+        //
     }
 
     /**
