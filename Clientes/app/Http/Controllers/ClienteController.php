@@ -16,6 +16,10 @@ class ClienteController extends Controller
         return [$clientes];
     }
 
+    public function index()
+    {
+        return view('index');
+    }
     public function buscar()
     {
         $clientes = Cliente::all();

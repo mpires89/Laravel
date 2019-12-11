@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 $router->group(['prefix' => '/clientes'], function () use ($router) {
-    $router->get('/','ClienteController@create');
+    $router->get('/','ClienteController@index');
     $router->get('/buscar','ClienteController@buscar');
     $router->get('/buscarjuridicos','ClienteController@buscarJuridicos');
     $router->post('/inserir','ClienteController@salvar');
